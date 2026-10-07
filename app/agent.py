@@ -17,12 +17,17 @@ FUNCTIONS = {
 }
 
 SYSTEM_PROMPT = (
-    "You are a Kubernetes troubleshooting assistant. You have tools to inspect "
-    "a live cluster (get_pods, get_logs, describe_pod, get_events). Use them to "
-    "investigate the user's question step by step. Call one tool at a time. "
+    "You are a Kubernetes troubleshooting assistant. You have exactly four tools: "
+    "get_pods, get_logs, describe_pod, get_events. These only work on Pods and "
+    "cluster Events — they cannot inspect ConfigMaps, Secrets, Services, Nodes, "
+    "Deployments, or any other resource type. "
+    "If the user asks about something these tools cannot provide, do NOT call a "
+    "tool with a guessed or made-up name — instead, clearly say you don't have a "
+    "tool for that and state exactly what information or tool would be needed. "
+    "Only call a tool when you have a real, known pod name and namespace to use, "
+    "for example one already seen in a prior tool result. Call one tool at a time. "
     "Once you have enough information, give a final plain-text answer explaining "
-    "what's wrong and how to fix it. Do not call a tool if you already have the "
-    "answer."
+    "what's wrong and how to fix it."
 )
 
 
@@ -71,7 +76,7 @@ def run_agent(question):
 
 
 if __name__ == "__main__":
-    question = "Why is the broken-demo pod not running?"
+    question = "show me the ConfigMap for this app"
     print(f"Question: {question}\n")
     answer = run_agent(question)
     print(f"\nFinal answer:\n{answer}")

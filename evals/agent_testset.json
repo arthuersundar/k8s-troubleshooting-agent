@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Why is the broken-demo pod not running?",
+    "type": "answerable",
+    "expect_keywords": ["image", "pull"]
+  },
+  {
+    "question": "show me the ConfigMap for this app",
+    "type": "unsupported",
+    "expect_keywords": ["don't have", "no tool", "cannot", "not able", "unable"]
+  },
+  {
+    "question": "what nodes are in the cluster?",
+    "type": "unsupported",
+    "expect_keywords": ["don't have", "no tool", "cannot", "not able", "unable", "does not provide", "doesn't provide"]
+  },
+  {
+    "question": "what pods are running in the default namespace?",
+    "type": "answerable",
+    "expect_keywords": ["broken-demo", "postgres", "rag-rag-api"]
+  }
+]
