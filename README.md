@@ -2,9 +2,7 @@
 
 [GitHub Repo](https://github.com/arthuersundar/k8s-troubleshooting-agent)
 
-An agent that investigates problems on a live Kubernetes cluster by calling
-real, read-only `kubectl` tools itself — instead of just answering questions
-from static documentation (see the companion [RAG project](https://github.com/arthuersundar/rag-platform)).
+Autonomous GenAI Agent for live Kubernetes cluster diagnostics. Implements a LangGraph ReAct loop, Python evaluation engine, and read-only kubectl tool calling. (see the companion [RAG project](https://github.com/arthuersundar/rag-platform)).
 
 **Status:** working ReAct loop with 4 tools, tested against real cluster
 failures, with an automated eval script. Containerized deployment and a
